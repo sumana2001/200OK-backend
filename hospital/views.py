@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.core import serializers
 from .models import *
 import json
 from django.views.decorators.csrf import csrf_exempt
@@ -55,8 +56,40 @@ def addHospital(request):
     response = json.dumps(received_json_data)
     return HttpResponse(response, content_type="application/json", status=201)
 
+
+
 # This is not yet finalised 
-def getHospitalbyid(request,myid):
-    items = Hosp.objects.get(pk=myid)
-    response = json.dumps(list(items))
+@csrf_exempt
+def idHospital(request,myid):
+    # print(myid, '...............................')
+    # items = Hosp.objects.filter(pk=myid)
+    ###items = Hosp.objects.get(id=myid)
+    # print(items, type(items))
+    # print(items, type(items))
+    ###response = serializers.serialize("json", [items, ])
+    # response = json.dumps(list(items))
+    # return HttpResponse(response, content_type="application/json")
+    if request.method == 'GET':
+        return getHospitalById(request, myid)
+    elif request.method == 'PUT':
+        return editHospitalById(request, myid)
+    elif request.method == 'DELETE':
+        return deleteHospitalById(request, myid)
+
+def getHospitalById(request, myid):
+    print("get hospital by id is executed.................")
+    item = Hosp.objects.get(id=myid)
+    response = serializers.serialize("json", [item, ])
+    return HttpResponse(response, content_type="application/json")
+
+def editHospitalById(request, myid):
+    print("edit hospital by id is executed...................")
+    item = Hosp.objects.get(id=myid)
+    response = serializers.serialize("json", [item, ])
+    return HttpResponse(response, content_type="application/json")
+
+def deleteHospitalById(request, myid):
+    print("delete hospital by id is executed...................")
+    item = Hosp.objects.get(id=myid)
+    response = serializers.serialize("json", [item, ])
     return HttpResponse(response, content_type="application/json")

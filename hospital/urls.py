@@ -4,6 +4,6 @@ from . import views
 
 urlpatterns = [
     path("hospital/", views.pathHospital, name="pathHospital"), # this will show all hospitals as per query
-    path("hospital/<int:myid>", views.getHospitalbyid, name="getHospitalbyid"),
+    path("hospital/<int:myid>", views.idHospital, name="idHospital"),
 
 ]
