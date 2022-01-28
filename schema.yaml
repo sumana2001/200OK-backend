@@ -1,0 +1,194 @@
+openapi: 3.0.0
+info:
+  version: 'v1'
+  title: 'Hospital API'
+  description: "This is an API for managing details of hospital."
+servers:
+  - url: 'https://3d884462-fc01-47e5-88c6-a6450e06494c.mock.pstmn.io'
+paths:
+  /hospital:
+    get:
+      summary: Hospitals
+      operationId: getHospitals
+      parameters: 
+          - name: name
+            in: query
+            required: false
+            schema: 
+                type: string
+          - name: speciality
+            in: query
+            required: false
+            schema: 
+                type: string
+          - name: typeGP
+            in: query
+            required: false
+            schema: 
+                type: boolean
+          - name: covid
+            in: query
+            required: false
+            schema: 
+                type: boolean
+          - name: pincode
+            in: query
+            required: false
+            schema: 
+                type: integer
+          - name: army
+            in: query
+            required: false
+            schema: 
+                type: boolean
+          - name: state
+            in: query
+            required: false
+            schema: 
+                type: string
+          - name: district
+            in: query
+            required: false
+            schema: 
+                type: string
+      tags:
+        - Hospitals
+      responses:
+        "200":
+          description: Hospitals
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HospitalListing"
+    post:
+      summary: Hospital
+      operationId: addHospitals
+      tags:
+        - Hospital
+      requestBody:
+        required: true
+        description: Hospital
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Hospital"
+      responses:
+        "201":
+          description: Hospital
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Hospital"
+  /hospital/{id}:
+    get:
+      summary: Hospital
+      operationId: getHospitals
+      parameters:
+        - name: id
+          in: path
+          description: The unique id.
+          required: true
+          schema:
+            type: string
+      tags:
+        - Hospital
+      responses:
+        "200":
+          description: Hospital
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Hospital"
+    put:
+      summary: Hospital
+      operationId: updateHospital
+      parameters:
+        - name: id
+          in: path
+          description: The unique id.
+          required: true
+          schema:
+            type: string
+      tags:
+        - Hospital
+      requestBody:
+        description: Hospital
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Hospital"
+      responses:
+        "204":
+          description: Hospital
+    delete:
+      summary: Hospital
+      operationId: deleteHospital
+      parameters:
+        - name: id
+          in: path
+          description: The unique id.
+          required: true
+          schema:
+            type: string
+      tags:
+        - Hospital
+      responses:
+        "204":
+          description: Hospital                                           
+components:
+  schemas:
+    HospitalListing:
+      type: array
+      items:
+        $ref: "#/components/schemas/Hospital"
+    Hospital:
+      type: object
+      required:
+        - id
+        - name
+        - speciality
+        - costWard
+        - typeGP
+        - rating
+        - contact
+        - covid
+        - availableBeds
+        - timings
+        - pincode
+        - army
+        - state
+        - district
+      properties:
+        id:
+          description: Unique identifier for the hospital
+          type: string
+        name:
+          description: The name of the hospital.
+          type: string
+        speciality:
+          description: The speciality of the hospital.
+          type: string
+        costWard:
+          description: "Cost of a single ward"
+          type: integer
+        typeGP:
+          description: "Wether the hospital is Private(false) or Government(true)."
+          type: boolean
+        rating:
+          type: integer
+        contact:
+          type: string
+        covid:
+          type: boolean
+        availableBeds:
+          type: integer
+        timings:
+          type: string    
+        pincode:
+          type: integer      
+        army:
+          type: boolean  
+        district:
+          type: string
+        state: 
+          type: string         
