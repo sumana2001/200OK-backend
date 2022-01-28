@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import render
 from django.core import serializers
 from .models import *
@@ -69,27 +69,47 @@ def idHospital(request,myid):
     ###response = serializers.serialize("json", [items, ])
     # response = json.dumps(list(items))
     # return HttpResponse(response, content_type="application/json")
-    if request.method == 'GET':
-        return getHospitalById(request, myid)
-    elif request.method == 'PUT':
-        return editHospitalById(request, myid)
-    elif request.method == 'DELETE':
-        return deleteHospitalById(request, myid)
+    item = False
+    try:
+        item = Hosp.objects.get(id = myid)
+    except Hosp.DoesNotExist:
+        item = None
+    if item != None:
+        if request.method == 'GET':
+            return getHospitalById(request, myid)
+        elif request.method == 'PUT':
+            return editHospitalById(request, myid)
+        elif request.method == 'DELETE':
+            return deleteHospitalById(request, myid)
+    else:
+        return HttpResponseNotFound("Data Doesn't Exist")
 
+@csrf_exempt
 def getHospitalById(request, myid):
-    print("get hospital by id is executed.................")
-    item = Hosp.objects.get(id=myid)
-    response = serializers.serialize("json", [item, ])
+    # print("get hospital by id is executed.................")
+    item = Hosp.objects.values().filter(id=myid)
+    response = json.dumps(list(item))
+    # print(item, type(item))
+    # response = serializers.serialize("json", [item, ])
     return HttpResponse(response, content_type="application/json")
 
+"""
+we need to check into the reponse of the below two methods as described in the 
+schema. There nothing is mentioned about the response.
+"""
+
+@csrf_exempt
 def editHospitalById(request, myid):
     print("edit hospital by id is executed...................")
-    item = Hosp.objects.get(id=myid)
-    response = serializers.serialize("json", [item, ])
+    item = Hosp.objects.values().filter(id=myid)
+    response = json.dumps(list(item))
     return HttpResponse(response, content_type="application/json")
 
+@csrf_exempt
 def deleteHospitalById(request, myid):
     print("delete hospital by id is executed...................")
-    item = Hosp.objects.get(id=myid)
-    response = serializers.serialize("json", [item, ])
+    item = Hosp.objects.values().filter(id=myid)
+    response = json.dumps(list(item))
+    Hosp.objects.get(id = myid).delete()
+    # here the deleted hospital is being returned which is not specified in the schema
     return HttpResponse(response, content_type="application/json")
