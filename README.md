@@ -24,7 +24,6 @@ We can also update information like Available beds through this API.<br/>
     <td align="center"><a href="https://github.com/anuragrawat015"><img src="https://avatars.githubusercontent.com/u/68148139?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Anurag Rawat</b></sub></a></td>
     <td align="center"><a href="https://github.com/bijoyvbabu123"><img src="https://avatars.githubusercontent.com/u/73835543?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Bijoy V Babu</b></sub></a></td>
     <td align="center"><a href="https://github.com/navya1819"><img src="https://avatars.githubusercontent.com/u/93279113?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Navya Nihal</b></sub></a></td>
-    <td align="center"><a href="https://github.com/rushi19383"><img src="https://avatars.githubusercontent.com/u/73731585?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Rushikesh Kantule</b></sub></a></td>
     <td align="center"><a href="https://github.com/sujal-sharma"><img src="https://avatars.githubusercontent.com/u/27073280?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Sujal Sharma</b></sub></a></td>
   </tr>
 </table>
@@ -102,8 +101,8 @@ The Application Runs on **localhost:8000**
 
 ## Important Links 🔴
 1. <a href="">Youtube</a>
-2. <a href="">Landing Page</a>
-3. <a href="">Deployed Backend</a>
+2. <a href="https://200-ok-frontend.vercel.app/">Landing Page</a>
+3. <a href="https://hospitalapi200ok.herokuapp.com/hospital">Deployed Backend</a>
 4. <a href="https://github.com/sumana2001/200OK-frontend">Frontent Repository</a>
 5. <a href="https://github.com/sumana2001/200OK-backend">Backend Repository</a>
 
