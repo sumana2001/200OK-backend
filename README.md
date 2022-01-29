@@ -37,7 +37,7 @@ npm install -g create-react-app
 Django is a Python web framework, thus requiring Python to be installed on your machine.To install Python on your machine go to https://python.org/download/, and download a Windows MSI installer for Python
 In the command prompt, execute the following command: 
 ```bash
-pip install django.
+pip install django
 ```
  This will download and install Django.
 
