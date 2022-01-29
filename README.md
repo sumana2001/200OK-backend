@@ -34,7 +34,19 @@ npm install -g create-react-app
 ```
 
 ### Install Django
-/* Add here */
+Django is a Python web framework, thus requiring Python to be installed on your machine.To install Python on your machine go to https://python.org/download/, and download a Windows MSI installer for Python
+In the command prompt, execute the following command: 
+```bash
+pip install django.
+```
+ This will download and install Django.
+
+
+After the installation has completed, you can verify your Django installation by executing
+```bash
+ django-admin --version 
+ ```
+ in the command prompt.
 
 ## Cloning and Running the Application in local 💻
 
@@ -57,9 +69,20 @@ npm start
 The Application Runs on **localhost:3000**
 
 ### To spin up the backend server
-/* Add here */
+Clone the project in localhost
+```bash
+git clone https://github.com/sumana2001/200OK-backend.git
+```
 
-/* Add links */
+In order to run the application in development mode type the following command
+
+```bash
+python manage.py runserver
+```
+
+The Application Runs on **localhost:8000**
+
+
 ## Important Links 🔴
 1. <a href="">Youtube</a>
 2. <a href="">Landing Page</a>
