@@ -58,7 +58,6 @@ def addHospital(request):
 
 
 
-# This is not yet finalised 
 @csrf_exempt
 def idHospital(request,myid):
     # print(myid, '...............................')
@@ -101,8 +100,15 @@ schema. There nothing is mentioned about the response.
 @csrf_exempt
 def editHospitalById(request, myid):
     print("edit hospital by id is executed...................")
-    item = Hosp.objects.values().filter(id=myid)
-    response = json.dumps(list(item))
+    received_json_data=json.loads(request.body)
+    # Hospital = Hosp(name=name,speciality=speciality,costWard=costWard,rating =rating , typeGP=typeGP, contact=contact,covid=covid,army=army,availableBeds=availableBeds,state=state,district=district,pincode=pincode,timings=timings)
+    # Hospital = Hosp.objects.get(id = myid)
+    Hospital = Hosp(id=myid,**received_json_data)
+    Hospital.save()
+    # item = Hosp.objects.values().filter(id=myid)
+    # response = json.dumps(list(item))
+    response = json.dumps(received_json_data)
+    # here the edited hospital is being returned which is not specified in the schema
     return HttpResponse(response, content_type="application/json")
 
 @csrf_exempt
