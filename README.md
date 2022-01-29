@@ -4,7 +4,18 @@
 </p>
 
 ## What is it? 💡
-/* Add here */
+This web application was created during the API Fest 2022 by team 200OK which helps the user search for hospitals across India based on a variety of parameters. We created a Hospital API with the help of Postman to create a working prototype.<br/>
+
+The Hospital API features searching by applying the following filters:<br/>
+-State<br/>
+-District<br/>
+-Pincode<br/>
+-Whether it is a COVID facilitated hospital<br/> 
+-Whether it is an Army Empanelled Hospital<br/>
+-Whether it is funded by Government or Private<br/>
+
+The Hospital API can also be used to add or delete a hospital from the database.<br/>
+We can also update information like Available beds through this API.<br/>
 
 ## Team ✨
 <table>
