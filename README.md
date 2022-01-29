@@ -73,6 +73,12 @@ Clone the project in localhost
 ```bash
 git clone https://github.com/sumana2001/200OK-backend.git
 ```
+It is necessary to create the initial migration for the models to synchronize the SQLite database for the first time.
+Type these commands in the terminal
+```bash
+python manage.py makemigrations
+python manage.py migrate
+```
 
 In order to run the application in development mode type the following command
 
